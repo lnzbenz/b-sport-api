@@ -7,19 +7,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const app_controller_1 = require("./app.controller");
-const app_service_1 = require("./app.service");
-const database_modules_1 = require("./database/database.modules");
-const user_modules_1 = require("./modules/user/user.modules");
-const store_modules_1 = require("./modules/store/store.modules");
-let AppModule = class AppModule {
+const database_modules_1 = require("../../database/database.modules");
+const store_provider_1 = require("./store.provider");
+const store_service_1 = require("./store.service");
+const store_controller_1 = require("./store.controller");
+let StoreModule = class StoreModule {
 };
-AppModule = __decorate([
+StoreModule = __decorate([
     common_1.Module({
-        imports: [database_modules_1.DatabaseModule, user_modules_1.UserModule, store_modules_1.StoreModule],
-        controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
+        imports: [database_modules_1.DatabaseModule],
+        controllers: [store_controller_1.StoreController],
+        providers: [...store_provider_1.StoreProvider, store_service_1.StoreService],
+        exports: [store_service_1.StoreService],
     })
-], AppModule);
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+], StoreModule);
+exports.StoreModule = StoreModule;
+//# sourceMappingURL=store.modules.js.map
